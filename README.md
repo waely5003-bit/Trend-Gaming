@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
@@ -10,10 +11,11 @@
             padding: 0;
             box-sizing: border-box;
             font-family: 'Cairo', sans-serif;
+            direction: rtl;
+            text-align: right;
         }
 
         body {
-            /* خلفية ملونة وساحرة تدمج بين تدرجات النيون والجيمنج */
             background: linear-gradient(135deg, #0d0221 0%, #190933 35%, #2c0c4d 70%, #4a0e4e 100%);
             background-attachment: fixed;
             color: #ffffff;
@@ -21,7 +23,6 @@
             overflow-x: hidden;
         }
 
-        /* تأثير إضاءات خلفية ملونة متحركة */
         body::before {
             content: '';
             position: fixed;
@@ -46,9 +47,8 @@
             filter: blur(80px);
         }
 
-        /* الهيدر وشريط التنقل */
         header {
-            background: rgba(13, 2, 33, 0.85);
+            background: rgba(13, 2, 33, 0.9);
             backdrop-filter: blur(12px);
             border-bottom: 1px solid rgba(0, 243, 255, 0.2);
             position: sticky;
@@ -58,12 +58,6 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-        }
-
-        .logo-area {
-            display: flex;
-            align-items: center;
-            gap: 10px;
         }
 
         .logo-area h1 {
@@ -77,7 +71,7 @@
 
         nav {
             display: flex;
-            gap: 20px;
+            gap: 25px;
             align-items: center;
         }
 
@@ -102,7 +96,6 @@
             box-shadow: 0 0 15px rgba(0, 243, 255, 0.4);
         }
 
-        /* المحتوى الرئيسي */
         .container {
             max-width: 1200px;
             margin: 40px auto;
@@ -119,7 +112,7 @@
         }
 
         .hero-card {
-            background: rgba(25, 12, 51, 0.7);
+            background: rgba(25, 12, 51, 0.75);
             backdrop-filter: blur(15px);
             border: 1px solid rgba(131, 56, 236, 0.4);
             border-radius: 20px;
@@ -149,7 +142,7 @@
         }
 
         h2 {
-            font-size: 2.5rem;
+            font-size: 2.3rem;
             font-weight: 900;
             margin-bottom: 15px;
             background: linear-gradient(45deg, #ffffff, #00f3ff);
@@ -164,7 +157,6 @@
             margin-bottom: 30px;
         }
 
-        /* كروت المميزات والأسعار */
         .features-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -172,8 +164,14 @@
             margin-bottom: 30px;
         }
 
+        @media(max-width: 600px) {
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
         .feature-box {
-            background: rgba(13, 2, 33, 0.6);
+            background: rgba(13, 2, 33, 0.7);
             border: 1px solid rgba(255, 255, 255, 0.1);
             padding: 20px;
             border-radius: 15px;
@@ -183,157 +181,4 @@
 
         .feature-box:hover {
             border-color: #00f3ff;
-            box-shadow: 0 0 20px rgba(0, 243, 255, 0.3);
-            transform: translateY(-5px);
-        }
-
-        .feature-box h4 {
-            color: #00f3ff;
-            font-size: 1.2rem;
-            margin-bottom: 5px;
-        }
-
-        .feature-box span {
-            color: #ff007f;
-            font-weight: 700;
-            font-size: 0.9rem;
-        }
-
-        /* الأزرار */
-        .btn-group {
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            padding: 12px 25px;
-            border-radius: 12px;
-            font-weight: 700;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            transition: 0.3s;
-            cursor: pointer;
-        }
-
-        .btn-primary {
-            background: linear-gradient(45deg, #00f3ff, #0077ff);
-            color: #fff;
-            box-shadow: 0 0 20px rgba(0, 243, 255, 0.4);
-        }
-
-        .btn-primary:hover {
-            box-shadow: 0 0 30px rgba(0, 243, 255, 0.8);
-            transform: scale(1.05);
-        }
-
-        .btn-secondary {
-            background: linear-gradient(45deg, #ff007f, #8338ec);
-            color: #fff;
-            box-shadow: 0 0 20px rgba(255, 0, 127, 0.4);
-        }
-
-        .btn-secondary:hover {
-            box-shadow: 0 0 30px rgba(255, 0, 127, 0.8);
-            transform: scale(1.05);
-        }
-
-        /* الجانب الأيمن / البطولات */
-        .side-card {
-            background: linear-gradient(135deg, rgba(131, 56, 236, 0.2), rgba(255, 0, 127, 0.1));
-            backdrop-filter: blur(15px);
-            border: 2px solid rgba(255, 0, 127, 0.4);
-            border-radius: 20px;
-            padding: 30px;
-            box-shadow: 0 0 30px rgba(255, 0, 127, 0.2);
-        }
-
-        .side-card h3 {
-            color: #ff007f;
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-            text-shadow: 0 0 10px rgba(255, 0, 127, 0.5);
-        }
-
-        .price-list {
-            list-style: none;
-            margin: 20px 0;
-        }
-
-        .price-list li {
-            display: flex;
-            justify-content: space-between;
-            padding: 10px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            font-weight: 600;
-        }
-
-        .price-list li span:last-child {
-            color: #00f3ff;
-        }
-    </style>
-</head>
-<body>
-
-    <header>
-        <div class="logo-area">
-            <h1>TREND GAMING</h1>
-        </div>
-        <nav>
-            <a href="#">الرئيسية</a>
-            <a href="#">أسعار الأجهزة</a>
-            <a href="#">متجر الشحن</a>
-            <a href="#">الكافيه</a>
-            <a href="#" class="cta-nav">تواصل معنا</a>
-        </nav>
-    </header>
-
-    <div class="container">
-        <!-- القسم الرئيسي -->
-        <div class="hero-card">
-            <div class="badge">🔥 أقوى تجربة جيمنج في المرج</div>
-            <h2>مرحباً بك في <br><span style="color: #00f3ff;">TREND GAMING</span></h2>
-            <p>أعلى مواصفات للكمبيوتر والجيمنج الاحترافي بشاشات تصل لـ 240Hz، إنترنت ألياف ضوئية فائق السرعة وبينغ منخفض جداً.</p>
-
-            <!-- أسعار الساعات -->
-            <div class="features-grid">
-                <div class="feature-box">
-                    <h4>10 ج.م</h4>
-                    <span>الساعة العادية</span>
-                </div>
-                <div class="feature-box">
-                    <h4>12 ج.م</h4>
-                    <span>فئة Pro</span>
-                </div>
-                <div class="feature-box">
-                    <h4>15 ج.م</h4>
-                    <span>فئة Ultra 240Hz</span>
-                </div>
-            </div>
-
-            <div class="btn-group">
-                <a href="#" class="btn btn-primary">استعرض الأسعار</a>
-                <a href="#" class="btn btn-secondary">شحن الألعاب</a>
-            </div>
-        </div>
-
-        <!-- القسم الجانبي -->
-        <div class="side-card">
-            <h3>🎮 بطولات وشحن ألعاب</h3>
-            <p>تابع مسابقات تريند الجيمينج وشحن ألعابك بأرخص سعر في مصر وبأسرع وقت عبر فودافون كاش.</p>
-            
-            <ul class="price-list">
-                <li><span>ساعة العادي:</span> <span>10 جنيه</span></li>
-                <li><span>ساعة Pro:</span> <span>12 جنيه</span></li>
-                <li><span>ساعة Ultra:</span> <span>15 جنيه</span></li>
-                <li><span>حالة السيرفرات:</span> <span style="color: #00ff66;">متوفر حالياً 🟢</span></li>
-            </ul>
-
-            <a href="#" class="btn btn-secondary" style="width: 100%; justify-content: center; margin-top: 15px;">تواصل معنا للاستفسار ←</a>
-        </div>
-    </div>
-
-</body>
-</html>
+            box-shadow: 0 0 20px rgba(0, 243, 255, 0.3
