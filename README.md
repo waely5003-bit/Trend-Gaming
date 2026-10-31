@@ -1,677 +1,340 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl" class="dark scroll-smooth">
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trend Gaming Center | تريند جيمينج سنتر</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- FontAwesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts: Cairo & Orbitron -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Orbitron:wght@600;800;900&display=swap" rel="stylesheet">
-
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    colors: {
-                        cyber: {
-                            black: '#0a0a0f',
-                            card: '#12121a',
-                            border: '#2a2a3d',
-                            cyan: '#00f0ff',
-                            purple: '#9d00ff',
-                            pink: '#ff007f',
-                            neonGreen: '#00ff66'
-                        }
-                    },
-                    fontFamily: {
-                        cairo: ['Cairo', 'sans-serif'],
-                        orbitron: ['Orbitron', 'sans-serif']
-                    },
-                    boxShadow: {
-                        'neon-cyan': '0 0 20px rgba(0, 240, 255, 0.4)',
-                        'neon-purple': '0 0 20px rgba(157, 0, 255, 0.4)',
-                        'neon-pink': '0 0 20px rgba(255, 0, 127, 0.4)'
-                    }
-                }
-            }
-        }
-    </script>
-
+    <title>Trend Gaming Center - المرج</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
     <style>
-        body {
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
             font-family: 'Cairo', sans-serif;
-            background-color: #0a0a0f;
-            color: #e2e8f0;
+        }
+
+        body {
+            /* خلفية ملونة وساحرة تدمج بين تدرجات النيون والجيمنج */
+            background: linear-gradient(135deg, #0d0221 0%, #190933 35%, #2c0c4d 70%, #4a0e4e 100%);
+            background-attachment: fixed;
+            color: #ffffff;
+            min-height: 100vh;
             overflow-x: hidden;
         }
 
-        .orbitron {
-            font-family: 'Orbitron', sans-serif;
+        /* تأثير إضاءات خلفية ملونة متحركة */
+        body::before {
+            content: '';
+            position: fixed;
+            top: -20%;
+            left: -20%;
+            width: 60vw;
+            height: 60vw;
+            background: radial-gradient(circle, rgba(0, 243, 255, 0.15) 0%, rgba(131, 56, 236, 0.05) 50%, transparent 70%);
+            z-index: -1;
+            filter: blur(80px);
         }
 
-        /* Glassmorphism styling */
-        .glass-panel {
-            background: rgba(18, 18, 26, 0.75);
+        body::after {
+            content: '';
+            position: fixed;
+            bottom: -20%;
+            right: -20%;
+            width: 60vw;
+            height: 60vw;
+            background: radial-gradient(circle, rgba(255, 0, 128, 0.15) 0%, rgba(131, 56, 236, 0.05) 50%, transparent 70%);
+            z-index: -1;
+            filter: blur(80px);
+        }
+
+        /* الهيدر وشريط التنقل */
+        header {
+            background: rgba(13, 2, 33, 0.85);
             backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-bottom: 1px solid rgba(0, 243, 255, 0.2);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
-        .glass-card {
-            background: rgba(22, 22, 34, 0.6);
-            backdrop-filter: blur(8px);
-            border: 1px solid rgba(0, 240, 255, 0.15);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
-        .glass-card:hover {
-            border-color: rgba(0, 240, 255, 0.6);
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px -5px rgba(0, 240, 255, 0.25);
+        .logo-area h1 {
+            font-size: 1.5rem;
+            font-weight: 900;
+            background: linear-gradient(45deg, #00f3ff, #ff007f);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 20px rgba(0, 243, 255, 0.4);
         }
 
-        /* Animated Gradients */
-        .gradient-text {
-            background: linear-gradient(135deg, #00f0ff 0%, #9d00ff 50%, #ff007f 100%);
+        nav {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        nav a {
+            color: #b8c1ec;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #00f3ff;
+            text-shadow: 0 0 10px rgba(0, 243, 255, 0.8);
+        }
+
+        .cta-nav {
+            background: linear-gradient(45deg, #00f3ff, #7000ff);
+            color: #fff !important;
+            padding: 8px 20px;
+            border-radius: 30px;
+            box-shadow: 0 0 15px rgba(0, 243, 255, 0.4);
+        }
+
+        /* المحتوى الرئيسي */
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+        }
+
+        @media(max-width: 900px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .hero-card {
+            background: rgba(25, 12, 51, 0.7);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(131, 56, 236, 0.4);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), inset 0 0 20px rgba(0, 243, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-card::before {
+            content: '';
+            position: absolute;
+            top: 0; right: 0; width: 100%; height: 4px;
+            background: linear-gradient(90deg, #00f3ff, #ff007f, #7000ff);
+        }
+
+        .badge {
+            display: inline-block;
+            background: rgba(0, 243, 255, 0.1);
+            color: #00f3ff;
+            border: 1px solid rgba(0, 243, 255, 0.3);
+            padding: 6px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-bottom: 20px;
+            box-shadow: 0 0 10px rgba(0, 243, 255, 0.2);
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: 15px;
+            background: linear-gradient(45deg, #ffffff, #00f3ff);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        .cyber-border-glow {
-            position: relative;
-        }
-        
-        .cyber-border-glow::before {
-            content: '';
-            position: absolute;
-            top: -2px; left: -2px; right: -2px; bottom: -2px;
-            background: linear-gradient(45deg, #00f0ff, #9d00ff, #ff007f);
-            z-index: -1;
-            border-radius: inherit;
-            opacity: 0;
-            transition: opacity 0.3s ease;
+        p {
+            color: #b8c1ec;
+            font-size: 1.05rem;
+            line-height: 1.6;
+            margin-bottom: 30px;
         }
 
-        .cyber-border-glow:hover::before {
-            opacity: 1;
+        /* كروت المميزات والأسعار */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-bottom: 30px;
         }
 
-        /* Grid Background Effect */
-        .cyber-grid {
-            background-image: linear-gradient(to right, rgba(255,255,255,0.03) 1px, transparent 1px),
-                              linear-gradient(to bottom, rgba(255,255,255,0.03) 1px, transparent 1px);
-            background-size: 40px 40px;
+        .feature-box {
+            background: rgba(13, 2, 33, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            transition: 0.3s;
         }
 
-        /* Pulse glow animation */
-        @keyframes pulseGlow {
-            0%, 100% { opacity: 0.4; }
-            50% { opacity: 0.8; }
+        .feature-box:hover {
+            border-color: #00f3ff;
+            box-shadow: 0 0 20px rgba(0, 243, 255, 0.3);
+            transform: translateY(-5px);
         }
 
-        .glow-effect {
-            animation: pulseGlow 4s infinite ease-in-out;
+        .feature-box h4 {
+            color: #00f3ff;
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+
+        .feature-box span {
+            color: #ff007f;
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+
+        /* الأزرار */
+        .btn-group {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 25px;
+            border-radius: 12px;
+            font-weight: 700;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, #00f3ff, #0077ff);
+            color: #fff;
+            box-shadow: 0 0 20px rgba(0, 243, 255, 0.4);
+        }
+
+        .btn-primary:hover {
+            box-shadow: 0 0 30px rgba(0, 243, 255, 0.8);
+            transform: scale(1.05);
+        }
+
+        .btn-secondary {
+            background: linear-gradient(45deg, #ff007f, #8338ec);
+            color: #fff;
+            box-shadow: 0 0 20px rgba(255, 0, 127, 0.4);
+        }
+
+        .btn-secondary:hover {
+            box-shadow: 0 0 30px rgba(255, 0, 127, 0.8);
+            transform: scale(1.05);
+        }
+
+        /* الجانب الأيمن / البطولات */
+        .side-card {
+            background: linear-gradient(135deg, rgba(131, 56, 236, 0.2), rgba(255, 0, 127, 0.1));
+            backdrop-filter: blur(15px);
+            border: 2px solid rgba(255, 0, 127, 0.4);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 0 30px rgba(255, 0, 127, 0.2);
+        }
+
+        .side-card h3 {
+            color: #ff007f;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            text-shadow: 0 0 10px rgba(255, 0, 127, 0.5);
+        }
+
+        .price-list {
+            list-style: none;
+            margin: 20px 0;
+        }
+
+        .price-list li {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            font-weight: 600;
+        }
+
+        .price-list li span:last-child {
+            color: #00f3ff;
         }
     </style>
 </head>
-<body class="cyber-grid min-h-screen flex flex-col justify-between selection:bg-cyber-cyan selection:text-black">
+<body>
 
-    <!-- Top Glow Background Blobs -->
-    <div class="fixed top-0 right-1/4 w-96 h-96 bg-cyber-cyan/10 rounded-full blur-3xl pointer-events-none glow-effect z-0"></div>
-    <div class="fixed top-1/3 left-1/4 w-96 h-96 bg-cyber-purple/15 rounded-full blur-3xl pointer-events-none glow-effect z-0" style="animation-delay: 2s;"></div>
-
-    <!-- Navigation Header -->
-    <header class="sticky top-0 z-50 glass-panel border-b border-cyber-border/50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-20">
-                
-                <!-- Logo -->
-                <a href="#" class="flex items-center space-x-3 space-x-reverse group">
-                    <div class="w-11 h-11 rounded-xl bg-gradient-to-tr from-cyber-cyan via-cyber-purple to-cyber-pink p-0.5 shadow-neon-cyan transition-transform duration-300 group-hover:scale-105">
-                        <div class="w-full h-full bg-cyber-black rounded-[10px] flex items-center justify-center">
-                            <i class="fa-solid font-gamepad text-cyber-cyan text-xl group-hover:text-cyber-pink transition-colors">🎮</i>
-                        </div>
-                    </div>
-                    <div>
-                        <span class="orbitron text-xl sm:text-2xl font-black tracking-wider text-white block leading-none">TREND</span>
-                        <span class="text-xs text-cyber-cyan font-semibold tracking-widest block mt-0.5">GAMING CENTER</span>
-                    </div>
-                </a>
-
-                <!-- Desktop Navigation Links -->
-                <nav class="hidden md:flex items-center space-x-8 space-x-reverse text-sm font-semibold">
-                    <a href="#home" class="text-cyber-cyan hover:text-white transition-colors py-2 flex items-center gap-2">
-                        <i class="fa-solid fa-house text-xs"></i> الرئيسية
-                    </a>
-                    <a href="#rates" class="text-gray-300 hover:text-cyber-cyan transition-colors py-2 flex items-center gap-2">
-                        <i class="fa-solid fa-desktop text-xs"></i> أسعار الأجهزة
-                    </a>
-                    <a href="#topup" class="text-gray-300 hover:text-cyber-purple transition-colors py-2 flex items-center gap-2">
-                        <i class="fa-solid fa-coins text-xs"></i> متجر الشحن
-                    </a>
-                    <a href="#cafe" class="text-gray-300 hover:text-cyber-pink transition-colors py-2 flex items-center gap-2">
-                        <i class="fa-solid fa-mug-hot text-xs"></i> الكافيه
-                    </a>
-                    <a href="#contact" class="text-gray-300 hover:text-cyber-cyan transition-colors py-2 flex items-center gap-2">
-                        <i class="fa-solid fa-location-dot text-xs"></i> العنوان وتواصل
-                    </a>
-                </nav>
-
-                <!-- Call to Action & Mobile Menu Button -->
-                <div class="flex items-center gap-4">
-                    <a href="https://wa.me/201234567890?text=أهلاً%20تريند%20جيمينج،%20عايز%20أسأل%20عن%20الأجهزة" target="_blank" 
-                       class="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-gradient-to-r from-cyber-cyan to-cyber-purple text-black font-bold text-sm shadow-neon-cyan hover:brightness-110 hover:scale-105 transition-all">
-                        <i class="fa-brands fa-whatsapp text-lg"></i>
-                        <span>تواصل معنا</span>
-                    </a>
-
-                    <button id="mobile-menu-btn" aria-label="Toggle Navigation Menu" class="md:hidden text-gray-300 hover:text-white p-2 focus:outline-none">
-                        <i class="fa-solid fa-bars text-2xl"></i>
-                    </button>
-                </div>
-            </div>
+    <header>
+        <div class="logo-area">
+            <h1>TREND GAMING</h1>
         </div>
-
-        <!-- Mobile Dropdown Menu -->
-        <div id="mobile-menu" class="hidden md:hidden glass-panel border-b border-cyber-border px-4 pt-2 pb-6 space-y-3">
-            <a href="#home" class="block py-2 text-cyber-cyan font-bold"><i class="fa-solid fa-house ml-2"></i>الرئيسية</a>
-            <a href="#rates" class="block py-2 text-gray-300 hover:text-cyber-cyan"><i class="fa-solid fa-desktop ml-2"></i>أسعار الأجهزة</a>
-            <a href="#topup" class="block py-2 text-gray-300 hover:text-cyber-purple"><i class="fa-solid fa-coins ml-2"></i>متجر الشحن</a>
-            <a href="#cafe" class="block py-2 text-gray-300 hover:text-cyber-pink"><i class="fa-solid fa-mug-hot ml-2"></i>الكافيه</a>
-            <a href="#contact" class="block py-2 text-gray-300 hover:text-cyber-cyan"><i class="fa-solid fa-location-dot ml-2"></i>العنوان وتواصل</a>
-            <a href="https://wa.me/201234567890?text=أهلاً%20تريند%20جيمينج،%20عايز%20أسأل%20عن%20الأجهزة" target="_blank" 
-               class="flex items-center justify-center gap-2 w-full py-3 mt-4 rounded-lg bg-gradient-to-r from-cyber-cyan to-cyber-purple text-black font-bold">
-                <i class="fa-brands fa-whatsapp text-lg"></i>
-                <span>تواصل معنا الآن</span>
-            </a>
-        </div>
+        <nav>
+            <a href="#">الرئيسية</a>
+            <a href="#">أسعار الأجهزة</a>
+            <a href="#">متجر الشحن</a>
+            <a href="#">الكافيه</a>
+            <a href="#" class="cta-nav">تواصل معنا</a>
+        </nav>
     </header>
 
-    <!-- MAIN CONTENT -->
-    <main class="flex-grow z-10">
+    <div class="container">
+        <!-- القسم الرئيسي -->
+        <div class="hero-card">
+            <div class="badge">🔥 أقوى تجربة جيمنج في المرج</div>
+            <h2>مرحباً بك في <br><span style="color: #00f3ff;">TREND GAMING</span></h2>
+            <p>أعلى مواصفات للكمبيوتر والجيمنج الاحترافي بشاشات تصل لـ 240Hz، إنترنت ألياف ضوئية فائق السرعة وبينغ منخفض جداً.</p>
 
-        <!-- HERO SECTION -->
-        <section id="home" class="relative pt-12 pb-20 md:pt-20 md:pb-28 overflow-hidden">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-                    
-                    <!-- Left/Top Column: Info -->
-                    <div class="lg:col-span-7 text-center lg:text-right space-y-6">
-                        
-                        <!-- Badge -->
-                        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-card border border-cyber-cyan/30 text-cyber-cyan text-xs sm:text-sm font-semibold tracking-wide">
-                            <span class="w-2 h-2 rounded-full bg-cyber-neonGreen animate-ping"></span>
-                            <span>أقوى تجربة جيمنج في المرج 🚀</span>
-                        </div>
-
-                        <!-- Main Heading -->
-                        <h1 class="text-4xl sm:text-6xl font-black text-white leading-tight">
-                            مرحباً بك في <br>
-                            <span class="gradient-text orbitron tracking-wider">TREND GAMING</span>
-                        </h1>
-
-                        <!-- Subtitle -->
-                        <p class="text-gray-400 text-base sm:text-lg max-w-2xl mx-auto lg:mx-0 leading-relaxed">
-                            أعلى مواصفات للكمبيوتر والجيمنج الاحترافي بشاشات تصل لـ <span class="text-cyber-cyan font-bold">240Hz</span>، إنترنت ألياف ضوئية فائق السرعة وبينج منخفض جداً.
-                        </p>
-
-                        <!-- Feature Badges -->
-                        <div class="grid grid-cols-3 gap-3 pt-4 max-w-lg mx-auto lg:mx-0">
-                            <div class="p-3 rounded-xl glass-card text-center">
-                                <i class="fa-solid fa-display text-cyber-cyan text-2xl mb-1"></i>
-                                <div class="orbitron text-lg font-bold text-white">240Hz</div>
-                                <div class="text-xs text-gray-400">شاشات احترافية</div>
-                            </div>
-                            <div class="p-3 rounded-xl glass-card text-center">
-                                <i class="fa-solid fa-wifi text-cyber-purple text-2xl mb-1"></i>
-                                <div class="orbitron text-lg font-bold text-white">FIBER</div>
-                                <div class="text-xs text-gray-400">بينج ثابت ومنخفض</div>
-                            </div>
-                            <div class="p-3 rounded-xl glass-card text-center">
-                                <i class="fa-solid fa-bolt text-cyber-pink text-2xl mb-1"></i>
-                                <div class="orbitron text-lg font-bold text-white">PRO</div>
-                                <div class="text-xs text-gray-400">أقوى الكروت والإمكانيات</div>
-                            </div>
-                        </div>
-
-                        <!-- Action Buttons -->
-                        <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-4">
-                            <a href="#rates" class="px-8 py-3.5 rounded-xl bg-gradient-to-r from-cyber-cyan to-blue-600 text-black font-black text-base shadow-neon-cyan hover:scale-105 transition-transform flex items-center gap-2">
-                                <i class="fa-solid fa-gamepad"></i>
-                                <span>استعرض الأسعار</span>
-                            </a>
-                            <a href="#topup" class="px-8 py-3.5 rounded-xl glass-panel border border-cyber-purple text-white font-bold text-base hover:bg-cyber-purple/20 hover:border-cyber-pink transition-all flex items-center gap-2">
-                                <i class="fa-solid fa-store text-cyber-pink"></i>
-                                <span>شحن الألعاب</span>
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Right/Bottom Column: Banner Card -->
-                    <div class="lg:col-span-5">
-                        <div class="relative rounded-2xl p-1 bg-gradient-to-b from-cyber-cyan via-cyber-purple to-cyber-pink shadow-neon-purple">
-                            <div class="bg-cyber-card rounded-xl p-6 sm:p-8 space-y-6 text-center relative overflow-hidden">
-                                <div class="absolute -top-12 -left-12 w-32 h-32 bg-cyber-pink/20 rounded-full blur-2xl"></div>
-                                
-                                <div class="inline-block p-4 rounded-full bg-cyber-black border border-cyber-cyan/30 text-cyber-cyan text-4xl mb-2">
-                                    <i class="fa-solid fa-trophy"></i>
-                                </div>
-
-                                <h2 class="text-2xl font-bold text-white">بطولات وشحن ألعاب</h2>
-                                <p class="text-sm text-gray-400">تابع مسابقات تريند الجيمينج وشحن ألعابك بأرخص سعر في مصر وبأسرع وقت عبر فودافون كاش.</p>
-
-                                <div class="p-4 rounded-lg bg-cyber-black/80 border border-cyber-border text-right space-y-2">
-                                    <div class="flex justify-between text-xs sm:text-sm">
-                                        <span class="text-gray-400">حالة السيرفرات:</span>
-                                        <span class="text-cyber-neonGreen font-bold flex items-center gap-1">
-                                            <span class="w-2 h-2 rounded-full bg-cyber-neonGreen inline-block"></span> شغال 24/7
-                                        </span>
-                                    </div>
-                                    <div class="flex justify-between text-xs sm:text-sm">
-                                        <span class="text-gray-400">الشحن الفوري:</span>
-                                        <span class="text-cyber-cyan font-bold">متوفر حالياً</span>
-                                    </div>
-                                </div>
-
-                                <a href="https://wa.me/201234567890?text=عايز%20أعرف%20تفاصيل%20الشحن%20والعروض" target="_blank"
-                                   class="block w-full py-3 rounded-lg bg-cyber-border hover:bg-cyber-purple hover:text-white transition-colors text-sm font-bold text-gray-300">
-                                    تواصل معنا للاستفسار <i class="fa-solid fa-arrow-left mr-2"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
+            <!-- أسعار الساعات -->
+            <div class="features-grid">
+                <div class="feature-box">
+                    <h4>10 ج.م</h4>
+                    <span>الساعة العادية</span>
+                </div>
+                <div class="feature-box">
+                    <h4>12 ج.م</h4>
+                    <span>فئة Pro</span>
+                </div>
+                <div class="feature-box">
+                    <h4>15 ج.م</h4>
+                    <span>فئة Ultra 240Hz</span>
                 </div>
             </div>
-        </section>
 
-        <!-- PC RATES SECTION -->
-        <section id="rates" class="py-16 bg-cyber-black/50 relative border-t border-cyber-border/40">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                
-                <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
-                    <h2 class="text-xs font-bold text-cyber-cyan tracking-widest uppercase orbitron">Gaming Rates</h2>
-                    <p class="text-3xl sm:text-4xl font-black text-white">أسعار اللعب بالساعة</p>
-                    <p class="text-gray-400 text-sm">اختر فئة الجهاز اللي تناسبك واستمتع باللعب</p>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    
-                    <!-- 10 EGP Card -->
-                    <div class="glass-card rounded-2xl p-6 flex flex-col justify-between border-t-4 border-t-cyber-cyan">
-                        <div>
-                            <div class="flex justify-between items-center mb-4">
-                                <span class="px-3 py-1 rounded-full bg-cyber-cyan/10 text-cyber-cyan text-xs font-bold">الفئة العادية</span>
-                                <i class="fa-solid fa-desktop text-2xl text-cyber-cyan"></i>
-                            </div>
-                            <h3 class="text-2xl font-bold text-white mb-2">Standard PC</h3>
-                            <p class="text-xs text-gray-400 mb-6">مناسب للألعاب الخفيفة والألعاب الجماعية السريعة.</p>
-
-                            <div class="text-4xl font-black text-white mb-6 orbitron">
-                                10 <span class="text-base font-normal text-gray-400">ج.م / ساعة</span>
-                            </div>
-
-                            <ul class="space-y-3 text-sm text-gray-300 mb-8">
-                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-cyber-cyan"></i> شاشات HD / Full HD</li>
-                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-cyber-cyan"></i> كروت شاشة ممتازة للألعاب العادية</li>
-                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-cyber-cyan"></i> سماعات جيمنج مريحة</li>
-                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-cyber-cyan"></i> ماوس وكيبورد جيمنج</li>
-                            </ul>
-                        </div>
-
-                        <a href="https://wa.me/201234567890?text=عايز%20أسأل%20عن%20أجهزة%20الـ%2010%20جنيه" target="_blank"
-                           class="w-full py-3 text-center rounded-xl bg-cyber-border hover:bg-cyber-cyan hover:text-black font-bold text-sm transition-all">
-                            تواصل معنا
-                        </a>
-                    </div>
-
-                    <!-- 12 EGP Card -->
-                    <div class="glass-card rounded-2xl p-6 flex flex-col justify-between border-t-4 border-t-cyber-purple">
-                        <div>
-                            <div class="flex justify-between items-center mb-4">
-                                <span class="px-3 py-1 rounded-full bg-cyber-purple/20 text-cyber-purple text-xs font-bold">الفئة المتوسطة</span>
-                                <i class="fa-solid fa-microchip text-2xl text-cyber-purple"></i>
-                            </div>
-                            <h3 class="text-2xl font-bold text-white mb-2">Pro Gaming</h3>
-                            <p class="text-xs text-gray-400 mb-6">أداء عالي للألعاب القوية ومعدل إطارات سلس.</p>
-
-                            <div class="text-4xl font-black text-white mb-6 orbitron">
-                                12 <span class="text-base font-normal text-gray-400">ج.م / ساعة</span>
-                            </div>
-
-                            <ul class="space-y-3 text-sm text-gray-300 mb-8">
-                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-cyber-purple"></i> شاشات Full HD 144Hz</li>
-                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-cyber-purple"></i> كروت شاشة عالية الأداء</li>
-                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-cyber-purple"></i> سماعات نقية بعزل صوت</li>
-                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-cyber-purple"></i> كراسي جيمنج مريحة</li>
-                            </ul>
-                        </div>
-
-                        <a href="https://wa.me/201234567890?text=عايز%20أسأل%20عن%20أجهزة%20الـ%2012%20جنيه" target="_blank"
-                           class="w-full py-3 text-center rounded-xl bg-cyber-border hover:bg-cyber-purple hover:text-white font-bold text-sm transition-all">
-                            تواصل معنا
-                        </a>
-                    </div>
-
-                    <!-- 15 EGP Card (Featured) -->
-                    <div class="glass-card rounded-2xl p-6 flex flex-col justify-between border-t-4 border-t-cyber-pink relative scale-105 shadow-neon-pink my-4 md:my-0">
-                        <div class="absolute -top-4 right-1/2 translate-x-1/2 px-4 py-1 rounded-full bg-gradient-to-r from-cyber-purple to-cyber-pink text-white text-xs font-black shadow-lg">
-                            الأقوى والأعلى 🔥
-                        </div>
-
-                        <div>
-                            <div class="flex justify-between items-center mb-4 mt-2">
-                                <span class="px-3 py-1 rounded-full bg-cyber-pink/20 text-cyber-pink text-xs font-bold">الفئة العالية 240Hz</span>
-                                <i class="fa-solid fa-crown text-2xl text-cyber-pink"></i>
-                            </div>
-                            <h3 class="text-2xl font-bold text-white mb-2">Ultra Extreme</h3>
-                            <p class="text-xs text-gray-400 mb-6">تجربة أسطورية للفاست شوتر والبطولات.</p>
-
-                            <div class="text-4xl font-black text-white mb-6 orbitron">
-                                15 <span class="text-base font-normal text-gray-400">ج.م / ساعة</span>
-                            </div>
-
-                            <ul class="space-y-3 text-sm text-gray-300 mb-8">
-                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-cyber-pink"></i> شاشات 240Hz 1ms احترافية</li>
-                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-cyber-pink"></i> أعلى مواصفات معالجات وكروت شاشة</li>
-                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-cyber-pink"></i> كيبورد ميكانيكي + ماوس احترافي</li>
-                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-cyber-pink"></i> أعلى فئة من الكراسي الـ Gaming</li>
-                            </ul>
-                        </div>
-
-                        <a href="https://wa.me/201234567890?text=عايز%20أسأل%20عن%20أجهزة%20الـ%2015%20جنيه" target="_blank"
-                           class="w-full py-3 text-center rounded-xl bg-gradient-to-r from-cyber-purple to-cyber-pink text-white font-bold text-sm shadow-neon-pink hover:opacity-90 transition-all">
-                            تواصل معنا
-                        </a>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
-        <!-- TOP-UP STORE PREVIEW SECTION -->
-        <section id="topup" class="py-16 relative">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                
-                <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
-                    <h2 class="text-xs font-bold text-cyber-purple tracking-widest uppercase orbitron">Game Recharge Store</h2>
-                    <p class="text-3xl sm:text-4xl font-black text-white">متجر شحن الألعاب الفوري</p>
-                    <p class="text-gray-400 text-sm">شحن رسمي ومضمون 100% لجميع الألعاب برقم الأيدي (ID)</p>
-                </div>
-
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                    
-                    <!-- PUBG Mobile Card -->
-                    <div class="glass-card rounded-2xl overflow-hidden group">
-                        <div class="h-40 bg-gradient-to-r from-yellow-600 to-amber-800 relative flex items-center justify-center overflow-hidden">
-                            <span class="orbitron font-black text-4xl text-black/20 absolute -right-4 -bottom-4 select-none">PUBG</span>
-                            <div class="text-center z-10">
-                                <i class="fa-solid fa-crosshairs text-5xl text-yellow-300 drop-shadow-md mb-2"></i>
-                                <h4 class="orbitron font-extrabold text-2xl text-white">PUBG MOBILE</h4>
-                            </div>
-                        </div>
-                        <div class="p-6 space-y-4">
-                            <div class="flex justify-between items-center text-sm border-b border-cyber-border/60 pb-2">
-                                <span class="text-gray-300">60 شدات (UC)</span>
-                                <span class="text-cyber-cyan font-bold orbitron">65 ج.م</span>
-                            </div>
-                            <div class="flex justify-between items-center text-sm border-b border-cyber-border/60 pb-2">
-                                <span class="text-gray-300">325 شدات (UC)</span>
-                                <span class="text-cyber-cyan font-bold orbitron">325 ج.m</span>
-                            </div>
-                            <div class="flex justify-between items-center text-sm border-b border-cyber-border/60 pb-2">
-                                <span class="text-gray-300">660 شدات (UC)</span>
-                                <span class="text-cyber-cyan font-bold orbitron">640 ج.م</span>
-                            </div>
-
-                            <a href="https://wa.me/201234567890?text=عايز%20أشحن%20شدات%20بابجي" target="_blank"
-                               class="block text-center w-full py-2.5 rounded-lg bg-cyber-purple/30 border border-cyber-purple text-white font-bold text-sm hover:bg-cyber-purple transition-colors mt-4">
-                                اطلب شحن ببجي الآن
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Valorant Card -->
-                    <div class="glass-card rounded-2xl overflow-hidden group">
-                        <div class="h-40 bg-gradient-to-r from-red-600 to-rose-900 relative flex items-center justify-center overflow-hidden">
-                            <span class="orbitron font-black text-4xl text-black/20 absolute -right-4 -bottom-4 select-none">VALO</span>
-                            <div class="text-center z-10">
-                                <i class="fa-solid fa-gun text-5xl text-red-200 drop-shadow-md mb-2"></i>
-                                <h4 class="orbitron font-extrabold text-2xl text-white">VALORANT</h4>
-                            </div>
-                        </div>
-                        <div class="p-6 space-y-4">
-                            <div class="flex justify-between items-center text-sm border-b border-cyber-border/60 pb-2">
-                                <span class="text-gray-300">475 VP Points</span>
-                                <span class="text-cyber-cyan font-bold orbitron">180 ج.م</span>
-                            </div>
-                            <div class="flex justify-between items-center text-sm border-b border-cyber-border/60 pb-2">
-                                <span class="text-gray-300">1000 VP Points</span>
-                                <span class="text-cyber-cyan font-bold orbitron">360 ج.م</span>
-                            </div>
-                            <div class="flex justify-between items-center text-sm border-b border-cyber-border/60 pb-2">
-                                <span class="text-gray-300">2050 VP Points</span>
-                                <span class="text-cyber-cyan font-bold orbitron">710 ج.م</span>
-                            </div>
-
-                            <a href="https://wa.me/201234567890?text=عايز%20أشحن%20فالورانت" target="_blank"
-                               class="block text-center w-full py-2.5 rounded-lg bg-cyber-purple/30 border border-cyber-purple text-white font-bold text-sm hover:bg-cyber-purple transition-colors mt-4">
-                                اطلب نقاط فالورانت
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Free Fire Card -->
-                    <div class="glass-card rounded-2xl overflow-hidden group">
-                        <div class="h-40 bg-gradient-to-r from-orange-600 to-amber-700 relative flex items-center justify-center overflow-hidden">
-                            <span class="orbitron font-black text-4xl text-black/20 absolute -right-4 -bottom-4 select-none">FF</span>
-                            <div class="text-center z-10">
-                                <i class="fa-solid fa-fire text-5xl text-orange-300 drop-shadow-md mb-2"></i>
-                                <h4 class="orbitron font-extrabold text-2xl text-white">FREE FIRE</h4>
-                            </div>
-                        </div>
-                        <div class="p-6 space-y-4">
-                            <div class="flex justify-between items-center text-sm border-b border-cyber-border/60 pb-2">
-                                <span class="text-gray-300">100+10 جواهر</span>
-                                <span class="text-cyber-cyan font-bold orbitron">55 ج.م</span>
-                            </div>
-                            <div class="flex justify-between items-center text-sm border-b border-cyber-border/60 pb-2">
-                                <span class="text-gray-300">310+31 جواهر</span>
-                                <span class="text-cyber-cyan font-bold orbitron">150 ج.م</span>
-                            </div>
-                            <div class="flex justify-between items-center text-sm border-b border-cyber-border/60 pb-2">
-                                <span class="text-gray-300">520+52 جواهر</span>
-                                <span class="text-cyber-cyan font-bold orbitron">250 ج.م</span>
-                            </div>
-
-                            <a href="https://wa.me/201234567890?text=عايز%20أشحن%20جواهر%20فري%20فاير" target="_blank"
-                               class="block text-center w-full py-2.5 rounded-lg bg-cyber-purple/30 border border-cyber-purple text-white font-bold text-sm hover:bg-cyber-purple transition-colors mt-4">
-                                اطلب جواهر فري فاير
-                            </a>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
-        <!-- CAFE & REFRESHMENTS SECTION -->
-        <section id="cafe" class="py-16 bg-cyber-black/50 border-t border-cyber-border/40">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-                    
-                    <div class="lg:col-span-5 space-y-6">
-                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full glass-card border border-cyber-pink/30 text-cyber-pink text-xs font-bold">
-                            <i class="fa-solid fa-mug-hot"></i> Trend Cafe
-                        </div>
-                        <h2 class="text-3xl sm:text-4xl font-black text-white">كافيه الجيمينج والمشروبات</h2>
-                        <p class="text-gray-400 text-sm leading-relaxed">
-                            ركز في جيمك وماتشاتك واطلب مشروبك يوصلك لحد جهازك! نوفر أفضل المشروبات الباردة والساخنة ومشروبات الطاقة.
-                        </p>
-
-                        <div class="space-y-3 pt-2">
-                            <div class="flex items-center justify-between p-3 rounded-xl glass-card">
-                                <span class="text-white font-semibold"><i class="fa-solid fa-bolt text-yellow-400 ml-2"></i>مشروبات طاقة (RedBull / Monster)</span>
-                                <span class="text-cyber-pink font-bold orbitron">حسب النوع</span>
-                            </div>
-                            <div class="flex items-center justify-between p-3 rounded-xl glass-card">
-                                <span class="text-white font-semibold"><i class="fa-solid fa-coffee text-amber-600 ml-2"></i>قهوة ومشروبات ساخنة (Spresso / Latte)</span>
-                                <span class="text-cyber-pink font-bold orbitron">من 15 ج.م</span>
-                            </div>
-                            <div class="flex items-center justify-between p-3 rounded-xl glass-card">
-                                <span class="text-white font-semibold"><i class="fa-solid fa-bottle-water text-blue-400 ml-2"></i>مشروبات غازية ومياه معدنية</span>
-                                <span class="text-cyber-pink font-bold orbitron">من 10 ج.م</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="lg:col-span-7">
-                        <div class="grid grid-cols-2 gap-4">
-                            <div class="glass-card p-6 rounded-2xl text-center space-y-2">
-                                <i class="fa-solid fa-headset text-4xl text-cyber-cyan mb-2"></i>
-                                <h3 class="text-white font-bold">خدمة سريعة</h3>
-                                <p class="text-xs text-gray-400">طلبك بيوصلك على المكتب من غير ما تقوم من اللعبة.</p>
-                            </div>
-                            <div class="glass-card p-6 rounded-2xl text-center space-y-2">
-                                <i class="fa-solid fa-snowflake text-4xl text-cyber-purple mb-2"></i>
-                                <h3 class="text-white font-bold">مكان مكيف بالكامل</h3>
-                                <p class="text-xs text-gray-400">جو منعش ومريح يساعدك على التركيز واللعب السلس.</p>
-                            </div>
-                            <div class="glass-card p-6 rounded-2xl text-center space-y-2">
-                                <i class="fa-solid fa-shield-halved text-4xl text-cyber-pink mb-2"></i>
-                                <h3 class="text-white font-bold">نظافة وتعقيم مستمر</h3>
-                                <p class="text-xs text-gray-400">تعقيم الأجهزة والسماعات والماوس بصفة مستمرة.</p>
-                            </div>
-                            <div class="glass-card p-6 rounded-2xl text-center space-y-2">
-                                <i class="fa-solid fa-clock text-4xl text-cyber-neonGreen mb-2"></i>
-                                <h3 class="text-white font-bold">شغالين 24/7</h3>
-                                <p class="text-xs text-gray-400">مفتوح طوال اليوم وفي أي وقت لتجمعات السهر.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
-            </div>
-        </section>
-
-        <!-- LOCATION & CONTACT SECTION -->
-        <section id="contact" class="py-16 relative">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-                    
-                    <div class="lg:col-span-6 space-y-6">
-                        <h2 class="text-3xl sm:text-4xl font-black text-white">زورنا في الجيم أو تواصل معانا</h2>
-                        <p class="text-gray-400 text-sm">
-                            إحنا موجودين دايماً عشان نقدملك أفضل خدمة. اتصل بنا أو ابعتلنا على الواتساب للشحن أو الاستفسار عن أي خدمة.
-                        </p>
-
-                        <div class="space-y-4">
-                            <div class="flex items-start gap-4 p-4 rounded-xl glass-panel">
-                                <div class="p-3 rounded-lg bg-cyber-cyan/10 text-cyber-cyan text-xl">
-                                    <i class="fa-solid fa-location-dot"></i>
-                                </div>
-                                <div>
-                                    <h4 class="text-white font-bold text-base">العنوان</h4>
-                                    <p class="text-sm text-gray-400">المرج - القاهرة (بالقرب من محطة المترو)</p>
-                                </div>
-                            </div>
-
-                            <div class="flex items-start gap-4 p-4 rounded-xl glass-panel">
-                                <div class="p-3 rounded-lg bg-cyber-purple/10 text-cyber-purple text-xl">
-                                    <i class="fa-solid fa-phone"></i>
-                                </div>
-                                <div>
-                                    <h4 class="text-white font-bold text-base">أرقام الهواتف والواتساب</h4>
-                                    <p class="text-sm text-gray-400 orbitron">01234567890 / 01112345678</p>
-                                </div>
-                            </div>
-
-                            <div class="flex items-start gap-4 p-4 rounded-xl glass-panel">
-                                <div class="p-3 rounded-lg bg-cyber-pink/10 text-cyber-pink text-xl">
-                                    <i class="fa-solid fa-wallet"></i>
-                                </div>
-                                <div>
-                                    <h4 class="text-white font-bold text-base">فودافون كاش لشحن الألعاب</h4>
-                                    <p class="text-sm text-gray-400 orbitron">01000000000</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Map / Location Box Placeholder -->
-                    <div class="lg:col-span-6">
-                        <div class="glass-card rounded-2xl p-6 text-center space-y-6 border border-cyber-cyan/30">
-                            <i class="fa-solid fa-map-location-dot text-6xl text-cyber-cyan animate-bounce"></i>
-                            <h3 class="text-xl font-bold text-white">خريطة الموقع والأماكن القريبة</h3>
-                            <p class="text-xs text-gray-400">يمكنك الوصول إلينا بسهولة عبر الخريطة أو الاتصال المباشر لوصف الطريق.</p>
-                            
-                            <a href="https://maps.google.com" target="_blank" 
-                               class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-cyber-cyan to-blue-600 text-black font-bold text-sm shadow-neon-cyan hover:scale-105 transition-transform w-full">
-                                <i class="fa-solid fa-diamond-turn-right"></i>
-                                <span>فتح خريطة جوجل Maps</span>
-                            </a>
-                        </div>
-                    </div>
-
-                </div>
-
-            </div>
-        </section>
-
-    </main>
-
-    <!-- FLOATING WHATSAPP BUTTON -->
-    <a href="https://wa.me/201234567890?text=أهلاً%20تريند%20جيمينج،%20محتاج%20استفسار" target="_blank"
-       aria-label="تواصل معنا على الواتساب"
-       class="fixed bottom-6 left-6 z-50 w-14 h-14 rounded-full bg-green-500 text-white flex items-center justify-center text-3xl shadow-lg hover:scale-110 transition-transform shadow-green-500/40">
-        <i class="fa-brands fa-whatsapp"></i>
-    </a>
-
-    <!-- FOOTER -->
-    <footer class="glass-panel border-t border-cyber-border/60 py-8 relative z-10">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-right">
-                <div>
-                    <div class="orbitron font-bold text-white text-lg">TREND GAMING CENTER</div>
-                    <p class="text-xs text-gray-500 mt-1">جميع الحقوق محفوظة © 2026 Trend Gaming Center</p>
-                </div>
-
-                <div class="flex items-center space-x-4 space-x-reverse text-gray-400">
-                    <a href="#" aria-label="Facebook" class="hover:text-cyber-cyan transition-colors"><i class="fa-brands fa-facebook text-xl"></i></a>
-                    <a href="#" aria-label="Instagram" class="hover:text-cyber-pink transition-colors"><i class="fa-brands fa-instagram text-xl"></i></a>
-                    <a href="#" aria-label="TikTok" class="hover:text-white transition-colors"><i class="fa-brands fa-tiktok text-xl"></i></a>
-                    <a href="#" aria-label="YouTube" class="hover:text-red-500 transition-colors"><i class="fa-brands fa-youtube text-xl"></i></a>
-                </div>
+            <div class="btn-group">
+                <a href="#" class="btn btn-primary">استعرض الأسعار</a>
+                <a href="#" class="btn btn-secondary">شحن الألعاب</a>
             </div>
         </div>
-    </footer>
 
-    <!-- JavaScript for Dynamic Interactions -->
-    <script>
-        // Toggle Mobile Menu
-        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
+        <!-- القسم الجانبي -->
+        <div class="side-card">
+            <h3>🎮 بطولات وشحن ألعاب</h3>
+            <p>تابع مسابقات تريند الجيمينج وشحن ألعابك بأرخص سعر في مصر وبأسرع وقت عبر فودافون كاش.</p>
+            
+            <ul class="price-list">
+                <li><span>ساعة العادي:</span> <span>10 جنيه</span></li>
+                <li><span>ساعة Pro:</span> <span>12 جنيه</span></li>
+                <li><span>ساعة Ultra:</span> <span>15 جنيه</span></li>
+                <li><span>حالة السيرفرات:</span> <span style="color: #00ff66;">متوفر حالياً 🟢</span></li>
+            </ul>
 
-        mobileMenuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
+            <a href="#" class="btn btn-secondary" style="width: 100%; justify-content: center; margin-top: 15px;">تواصل معنا للاستفسار ←</a>
+        </div>
+    </div>
 
-        // Close Mobile Menu on Link Click
-        const mobileLinks = mobileMenu.querySelectorAll('a');
-        mobileLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
-            });
-        });
-    </script>
 </body>
 </html>
